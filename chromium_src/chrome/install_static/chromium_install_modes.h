@@ -465,15 +465,15 @@ inline constexpr auto kInstallModes = std::to_array<InstallConstants>({
         .logo_suffix = L"",  // No logo suffix for the primary install mode.
         .app_guid =
             L"",  // Empty app_guid since no integraion with Brave Update.
-        .base_app_name = L"Brave Development",     // A distinct base_app_name.
-        .base_app_id = L"BraveDevelopment",        // A distinct base_app_id.
-        .browser_prog_id_prefix = L"BraveDevHTM",  // Browser ProgID prefix.
+        .base_app_name = L"Kitsune Development",     // A distinct base_app_name.
+        .base_app_id = L"KitsuneDevelopment",        // A distinct base_app_id.
+        .browser_prog_id_prefix = L"KitsuneDevHTM",  // Browser ProgID prefix.
         .browser_prog_id_description =
-            L"Brave Development HTML Document",  // Browser ProgID description.
-        .direct_launch_url_scheme = "brave-browser-development",
-        .pdf_prog_id_prefix = L"BraveDevPDF",  // PDF ProgID prefix.
+            L"Kitsune Development HTML Document",  // Browser ProgID description.
+        .direct_launch_url_scheme = "kitsune-browser-development",
+        .pdf_prog_id_prefix = L"KitsuneDevPDF",  // PDF ProgID prefix.
         .pdf_prog_id_description =
-            L"Brave Development PDF Document",  // PDF ProgID description.
+            L"Kitsune Development PDF Document",  // PDF ProgID description.
         .active_setup_guid =
             L"{D6527C63-5CDD-4EF3-9299-1504E17CBD18}",  // Active Setup GUID.
         .toast_activator_clsid = {0xeb41c6e8,
