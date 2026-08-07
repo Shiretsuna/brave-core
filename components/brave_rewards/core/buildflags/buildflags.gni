@@ -6,7 +6,7 @@
 import("//brave/components/brave_origin/buildflags/buildflags.gni")
 
 declare_args() {
-  enable_brave_rewards = !is_brave_origin_branded
+  enable_brave_rewards = false  # Kitsune: disabled (see kitsune/README.md)
 
   # These are public, non-secret endpoints and custodian fee addresses. They
   # are defaulted here so they don't need to be supplied via the build
