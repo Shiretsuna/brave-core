@@ -44,7 +44,7 @@ void SetBraveAsDefaultPrivateSearchProvider(Profile& profile) {
       TemplateURLPrepopulateData::ResolverFactory::GetForProfile(&profile);
   const auto template_url_data =
       prepopulate_data_resolver->GetPrepopulatedEngine(
-          TemplateURLPrepopulateData::PREPOPULATED_ENGINE_ID_BRAVE);
+          TemplateURLPrepopulateData::PREPOPULATED_ENGINE_ID_GOOGLE);
   DCHECK(template_url_data);
   prefs.SetString(prefs::kSyncedDefaultPrivateSearchProviderGUID,
                   template_url_data->sync_guid);

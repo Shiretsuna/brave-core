@@ -227,23 +227,12 @@ std::vector<const PrepopulatedEngine*> GetBravePrepopulatedEnginesForCountryID(
   return engines;
 }
 
-// A versioned map tracking the singular default search engine per-country.
-//
-// When a profile is created, the current value for `kBraveCurrentDataVersion`
-// in `//brave/components/search_engines/brave_prepopulated_engines.h`
-// is stored as a profile preference.
-//
-// See:
-// - `SetDefaultSearchVersion` in `//brave/browser/profiles/profile_util.cc`
-// - `//brave/browser/profiles/brave_profile_manager.cc` where it is called
-//
-// If that person resets the profile using brave://settings/reset, we need to
-// set the default search engine back to what it was when the profile was
-// originally created. This way, a person doesn't get a new unexpected default
-// when they reset the profile; it goes back to the original value.
-TemplateURLPrepopulateData::BravePrepopulatedEngineID GetDefaultSearchEngine(
-    country_codes::CountryId country_id,
-    int version) {
+// Kitsune: always default to Google regardless of country/version. Upstream
+// Brave tracks a versioned per-country map here (see history) so existing
+// profiles keep their original default across resets; that concern doesn't
+// apply to this fork, which always wants Google.
+[[maybe_unused]] TemplateURLPrepopulateData::BravePrepopulatedEngineID
+GetDefaultSearchEngine(country_codes::CountryId country_id, int version) {
   // LINT.IfChange
   const TemplateURLPrepopulateData::BravePrepopulatedEngineID default_v6 =
       TemplateURLPrepopulateData::PREPOPULATED_ENGINE_ID_GOOGLE;
@@ -741,12 +730,9 @@ std::vector<const PrepopulatedEngine*> GetPrepopulatedEngines(
 TemplateURLPrepopulateData::BravePrepopulatedEngineID GetDefaultEngine(
     CountryId country_id,
     PrefService& prefs) {
-  int version = TemplateURLPrepopulateData::kBraveCurrentDataVersion;
-  if (prefs.HasPrefPath(::prefs::kBraveDefaultSearchVersion)) {
-    version = prefs.GetInteger(::prefs::kBraveDefaultSearchVersion);
-  }
-
-  return GetDefaultSearchEngine(country_id, version);
+  // Kitsune: always default to Google. See GetDefaultSearchEngine above for
+  // why the per-country/version resolution isn't used here.
+  return TemplateURLPrepopulateData::PREPOPULATED_ENGINE_ID_GOOGLE;
 }
 
 }  // namespace regional_capabilities
